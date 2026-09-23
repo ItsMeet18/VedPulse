@@ -8,6 +8,12 @@
 
 **VedPulse** is a modern, comprehensive digital healthcare platform designed to bridge classical Ayurvedic Panchakarma therapy with modern clinical workflows. It offers role-based portals for patients and Ayurvedic practitioners (Vaidyas), real-time appointment scheduling, personalized detox tracking, and an interactive Ayurvedic AI assistant.
 
+## 🌐 Live Demo
+
+🚀 **[Visit VedPulse — Live Website](https://vedpulse.vercel.app/)**
+
+> Explore the deployed application, including the patient portal, doctor dashboard, appointment booking, and Ayurvedic AI assistant.
+
 ---
 
 ## ✨ Features
