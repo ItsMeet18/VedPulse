@@ -355,35 +355,22 @@ function LoginContent() {
                     <div className="flex items-center justify-between font-semibold text-foreground">
                       <span className="flex items-center gap-1.5 text-primary">
                         <KeyRound className="h-3.5 w-3.5" />
-                        Demo Patient Accounts (Password: <code className="font-mono">Password@123</code>):
+                        Demo Patient Account (Password: <code className="font-mono">Password@123</code>):
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1">
+                    <div className="pt-1">
                       <Button
                         type="button"
                         variant="outline"
                         size="sm"
                         onClick={() => quickFillPatient("patient@vedpulse.com")}
-                        className="h-auto py-1.5 px-2.5 text-left flex flex-col items-start justify-center text-[11px] bg-background hover:bg-primary/10 hover:border-primary/40"
+                        className="w-full h-auto py-1.5 px-2.5 text-left flex items-center justify-between text-[11px] bg-background hover:bg-primary/10 hover:border-primary/40"
                       >
                         <span className="font-semibold text-foreground flex items-center gap-1">
-                          <Sparkles className="h-3 w-3 text-primary" /> John Doe (Demo)
+                          <Sparkles className="h-3 w-3 text-primary" /> John Doe (Demo Patient)
                         </span>
                         <span className="text-[10px] text-muted-foreground font-mono">patient@vedpulse.com</span>
-                      </Button>
-
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        onClick={() => quickFillPatient("meetshah.180106@gmail.com")}
-                        className="h-auto py-1.5 px-2.5 text-left flex flex-col items-start justify-center text-[11px] bg-background hover:bg-primary/10 hover:border-primary/40"
-                      >
-                        <span className="font-semibold text-foreground flex items-center gap-1">
-                          <User className="h-3 w-3 text-primary" /> Meet Shah (Clean Account)
-                        </span>
-                        <span className="text-[10px] text-muted-foreground font-mono">meetshah.180106@gmail.com</span>
                       </Button>
                     </div>
                   </div>

@@ -71,90 +71,85 @@ export function generateSalt(): string {
   return Math.random().toString(36).substring(2) + Date.now().toString(36)
 }
 
-// Initial authorized demo accounts (labeled demo accounts for testing)
-const SEED_USERS: { user: User; rawPass: string }[] = [
-  // 1. Demo Patient: John Doe
+// Initial authorized pre-hashed accounts (zero plaintext passwords stored in source code)
+const SEED_USERS: StoredUser[] = [
+  // 1. Demo Patient: John Doe (Password: Password@123)
   {
-    user: {
-      id: "PAT123456",
-      email: "patient@vedpulse.com",
-      role: "patient",
-      name: "John Doe",
-      age: 35,
-      phone: "+91 9876543210",
-      location: "Mumbai, Maharashtra",
-      address: "402, Green Meadows, Andheri West, Mumbai",
-      isDemo: true,
-      createdAt: "2024-11-01T08:00:00.000Z",
-    },
-    rawPass: "Password@123",
+    id: "PAT123456",
+    email: "patient@vedpulse.com",
+    role: "patient",
+    name: "John Doe",
+    age: 35,
+    phone: "+91 9876543210",
+    location: "Mumbai, Maharashtra",
+    address: "402, Green Meadows, Andheri West, Mumbai",
+    isDemo: true,
+    createdAt: "2024-11-01T08:00:00.000Z",
+    salt: "33752326b45316511be119dba6013fee",
+    passwordHash: "7113886141891bfd099e5bab6457f5ddfff6e83e445e9bdcd2701abd9b6290c9",
   },
-  // 2. Demo Doctor 1: Dr. Rajesh Sharma
+  // 2. Demo Doctor 1: Dr. Rajesh Sharma (Password: Doctor@123)
   {
-    user: {
-      id: "DOC001",
-      email: "dr.sharma@vedpulse.com",
-      role: "doctor",
-      name: "Dr. Rajesh Sharma",
-      phone: "+91 9820012345",
-      location: "Mumbai, Maharashtra",
-      address: "VedPulse Center, Bandra West, Mumbai",
-      specialization: "Chief Panchakarma Specialist",
-      experience: "15+ Years",
-      isDemo: true,
-      createdAt: "2024-10-01T08:00:00.000Z",
-    },
-    rawPass: "Doctor@123",
+    id: "DOC001",
+    email: "dr.sharma@vedpulse.com",
+    role: "doctor",
+    name: "Dr. Rajesh Sharma",
+    phone: "+91 9820012345",
+    location: "Mumbai, Maharashtra",
+    address: "VedPulse Center, Bandra West, Mumbai",
+    specialization: "Chief Panchakarma Specialist",
+    experience: "15+ Years",
+    isDemo: true,
+    createdAt: "2024-10-01T08:00:00.000Z",
+    salt: "3a816e193a65bdf795c1a1c306adfc05",
+    passwordHash: "7eda9bc3b16965b6599a8bcfa0dcee28a8c2bdcdf43fa882304557a4a4ff511d",
   },
-  // 3. Demo Doctor 2: Dr. Priya Patel
+  // 3. Demo Doctor 2: Dr. Priya Patel (Password: Doctor@123)
   {
-    user: {
-      id: "DOC002",
-      email: "dr.patel@vedpulse.com",
-      role: "doctor",
-      name: "Dr. Priya Patel",
-      phone: "+91 9820054321",
-      location: "Pune, Maharashtra",
-      address: "Ayurvedic Wellness Sanctuary, Koregaon Park, Pune",
-      specialization: "Ayurvedic Physician & Nutritionist",
-      experience: "12+ Years",
-      isDemo: true,
-      createdAt: "2024-10-01T08:00:00.000Z",
-    },
-    rawPass: "Doctor@123",
+    id: "DOC002",
+    email: "dr.patel@vedpulse.com",
+    role: "doctor",
+    name: "Dr. Priya Patel",
+    phone: "+91 9820054321",
+    location: "Pune, Maharashtra",
+    address: "Ayurvedic Wellness Sanctuary, Koregaon Park, Pune",
+    specialization: "Ayurvedic Physician & Nutritionist",
+    experience: "12+ Years",
+    isDemo: true,
+    createdAt: "2024-10-01T08:00:00.000Z",
+    salt: "78f8ffcfd917a3816ce431d073296317",
+    passwordHash: "d87c11ba11131c888b8c842a7c5597f8737389357e3a6a458cff1644ce87c83f",
   },
-  // 4. Demo Doctor 3: Dr. Amit Singh
+  // 4. Demo Doctor 3: Dr. Amit Singh (Password: Doctor@123)
   {
-    user: {
-      id: "DOC003",
-      email: "dr.singh@vedpulse.com",
-      role: "doctor",
-      name: "Dr. Amit Singh",
-      phone: "+91 9820098765",
-      location: "Ahmedabad, Gujarat",
-      address: "Veda Detox Institute, SG Highway, Ahmedabad",
-      specialization: "Detox & Rejuvenation Specialist",
-      experience: "10+ Years",
-      isDemo: true,
-      createdAt: "2024-10-01T08:00:00.000Z",
-    },
-    rawPass: "Doctor@123",
+    id: "DOC003",
+    email: "dr.singh@vedpulse.com",
+    role: "doctor",
+    name: "Dr. Amit Singh",
+    phone: "+91 9820098765",
+    location: "Ahmedabad, Gujarat",
+    address: "Veda Detox Institute, SG Highway, Ahmedabad",
+    specialization: "Detox & Rejuvenation Specialist",
+    experience: "10+ Years",
+    isDemo: true,
+    createdAt: "2024-10-01T08:00:00.000Z",
+    salt: "bda023287284fcefbea1eb5951457086",
+    passwordHash: "5e41c28b7910b222c7d8c640ea03340e3426a404142f6431117622657d12b0c5",
   },
-  // 5. Customer Account: meetshah.180106@gmail.com (Real Customer Account - NO demo data)
+  // 5. Customer Account: meetshah.180106@gmail.com (Cryptographically Hashed)
   {
-    user: {
-      id: "PAT990001",
-      email: "meetshah.180106@gmail.com",
-      role: "patient",
-      name: "Meet Shah",
-      age: 26,
-      phone: "+91 9876500000",
-      location: "Mumbai, Maharashtra",
-      address: "Mumbai, India",
-      isDemo: false, // Genuine customer account
-      createdAt: new Date().toISOString(),
-    },
-    rawPass: "Password@123",
+    id: "PAT990001",
+    email: "meetshah.180106@gmail.com",
+    role: "patient",
+    name: "Meet Shah",
+    age: 26,
+    phone: "+91 9876500000",
+    location: "Mumbai, Maharashtra",
+    address: "Mumbai, India",
+    isDemo: false,
+    createdAt: "2024-11-01T08:00:00.000Z",
+    salt: "4457e78f59cb11acebae9db8e5615e55",
+    passwordHash: "cda03f4d3a2504066e1233b7f83774d940cb4794bf2c6d6fc34b7a09ee909626",
   },
 ]
 
@@ -171,34 +166,24 @@ export async function initializeUserStore(): Promise<StoredUser[]> {
     console.error("Failed to read user store from localStorage", e)
   }
 
-  // Ensure all seed demo users & doctors exist with accurate credentials in user store
+  // Ensure all seed users & doctors exist with synchronized credentials in user store
   let modified = false
-  for (const item of SEED_USERS) {
+  for (const seedUser of SEED_USERS) {
     const matchIdx = existingUsers.findIndex(
       (u) =>
-        u.id === item.user.id ||
-        u.email.toLowerCase() === item.user.email.toLowerCase() ||
-        (item.user.id === "DOC001" && (u.id === "DOC001" || u.email.toLowerCase() === "doctor@vedpulse.com" || u.email.toLowerCase() === "dr.sharma@vedpulse.com"))
+        u.id === seedUser.id ||
+        u.email.toLowerCase() === seedUser.email.toLowerCase() ||
+        (seedUser.id === "DOC001" && (u.id === "DOC001" || u.email.toLowerCase() === "doctor@vedpulse.com" || u.email.toLowerCase() === "dr.sharma@vedpulse.com"))
     )
 
-    const salt = generateSalt()
-    const passwordHash = await hashPassword(item.rawPass, salt)
-
     if (matchIdx === -1) {
-      // Seed missing user
-      existingUsers.push({
-        ...item.user,
-        salt,
-        passwordHash,
-      })
+      existingUsers.push(seedUser)
       modified = true
     } else {
-      // Ensure seed attributes, email, and password hashes are synchronized
+      // Synchronize seed user credentials and attributes
       existingUsers[matchIdx] = {
         ...existingUsers[matchIdx],
-        ...item.user,
-        salt,
-        passwordHash,
+        ...seedUser,
       }
       modified = true
     }
@@ -307,23 +292,7 @@ export async function authenticateUser(
 
   // Validate hashed password
   const hashedInput = await hashPassword(password, found.salt)
-  let passwordMatches = hashedInput === found.passwordHash
-
-  // Fallback check for known seed accounts (e.g. Doctor@123 / Password@123)
-  if (!passwordMatches) {
-    const seedMatch = SEED_USERS.find(
-      (s) => s.user.id === found.id || s.user.email.toLowerCase() === found.email.toLowerCase()
-    )
-    if (seedMatch && password === seedMatch.rawPass) {
-      // Refresh password hash
-      const newSalt = generateSalt()
-      const newHash = await hashPassword(password, newSalt)
-      found.salt = newSalt
-      found.passwordHash = newHash
-      await saveUser(found)
-      passwordMatches = true
-    }
-  }
+  const passwordMatches = hashedInput === found.passwordHash
 
   if (!passwordMatches) {
     return {
