@@ -95,7 +95,7 @@ vedpulse/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/vedpulse.git
+   git clone https://github.com/ItsMeet18/vedpulse.git
    cd vedpulse
    ```
 
